@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>jQuery - 分页插件</title>
+		<style>
+			* {
+				margin: 0;padding: 0;
+			}
+			
+			.container {
+				margin:50px;height:200px;
+			}
+			/*
+			.j_page {
+				font-size: 12px;
+				overflow: hidden;
+				color: #333;
+			}
+			.j_page .p_button {
+				float: left;
+				margin: 0 2px;
+			}
+			.j_page span {
+				display: inline-block;
+				border: 1px solid #ccc;
+				padding: 5px;
+				text-align: center;
+				cursor: pointer;
+				color: #333;
+			}
+			.j_page span:hover {
+				background:#ccc;
+				color:#fff;
+			}
+			
+			.j_page .p_numbers {
+				display: inline-block;
+				float: left;
+				overflow: hidden;
+			}
+			.j_page .p_numbers span {
+				padding-left: 10px;
+				padding-right: 10px
+			}
+			.j_page .p_numbers span.current_page {
+				background: #ccc;
+				color: #fff;
+			}
+			.j_page a {
+				display:inline-block;padding:5px;
+			}
+			.j_page a.p_more {
+				border: 0;
+				cursor: default;
+				display: none;
+				float: left;
+			}
+			.p_button.p_first,.p_button.p_last,.p_button.p_prev,.p_button.p_next {
+				padding-left: 15px;
+				padding-right: 15px;
+			}*/
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			
+		</div>
+
+		<script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery-jPage-min-2.0.js" ></script>
+		<script>
+			$(".container").jPage({
+				totalPages:30000000, 								// 分页总页数
+				url:"http://127.0.0.1:8020/jquery-jPage/data.txt", 	// 分页请求的路径，发送请求时会自动增加一个参数page，为当前页码，不用手动传入当前页码
+				dataType:"text", 									// Ajax请求响应返回的数据格式，与Ajax的参数一致，请求类型为get
+				callback:function(data) { 							// 请求成功后调用的函数，参数data为服务器响应的数据
+					var re = eval("("+ data +")");
+					console.log(re.name + " " + re.sex + " " + re.age);
+				},
+				background: "orange", 		// 当前页按钮的背景颜色
+				color: "#fff", 				// 当前按钮的前景色
+				defaultBackground: "#fff", 	// 分页按钮默认的背景色
+				defaultColor: "#333" 		// 分页按钮的默认前景色
+			});
+		</script>
+	</body>
+</html>
