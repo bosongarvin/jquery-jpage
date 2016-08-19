@@ -71,10 +71,10 @@
 		<script type="text/javascript" src="js/jquery-jPage-min-2.0.js" ></script>
 		<script>
 			$(".container").jPage({
-				totalPages:30000000, 								// 分页总页数
+				totalPages:30000000, 					// 分页总页数
 				url:"http://127.0.0.1:8020/jquery-jPage/data.txt", 	// 分页请求的路径，发送请求时会自动增加一个参数page，为当前页码，不用手动传入当前页码
-				dataType:"text", 									// Ajax请求响应返回的数据格式，与Ajax的参数一致，请求类型为get
-				callback:function(data) { 							// 请求成功后调用的函数，参数data为服务器响应的数据
+				dataType:"text", 					// Ajax请求响应返回的数据格式,默认为json格式，与Ajax的参数一致，请求类型为get
+				callback:function(data) { 				// 请求成功后调用的函数，参数data为服务器响应的数据
 					var re = eval("("+ data +")");
 					console.log(re.name + " " + re.sex + " " + re.age);
 				},
